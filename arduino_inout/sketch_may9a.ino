@@ -12,6 +12,8 @@ void setup() {
 }
 
 void loop() {
+  int sensor_value = analogRead(soundSensor); // 소리 센서 값 읽기
+  Serial.println(sensor_value);
   // put your main code here, to run repeatedly:
   if(analogRead(soundSensor)>=threshold){
     analogWrite(vibrationMotor, 100);
@@ -20,5 +22,4 @@ void loop() {
   }
   else
     delay(1);
-
 }
