@@ -7,7 +7,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
 # 탐색할 폴더 경로 설정
-base_path = "C:\\Users\\anhee\\OneDrive\\바탕 화면\\sound"
+base_path = "C:\\2024-1학기\\캡스톤디자인\\sound_dataset"
 
 # 라벨 정의
 label_mapping = {}
@@ -67,6 +67,8 @@ def print_prediction(file_name):
     predicted_class = predicted_vector[0]  # 예측된 클래스
     print("The predicted class is:", predicted_class)
 
-# 새로운 파일에 대한 예측 출력
-filename = "C:\\Users\\anhee\\OneDrive\\바탕 화면\\18453-3-0-0.wav"  # 예측할 파일 경로
-print_prediction(filename)
+
+def classify_sound_file(file_path):
+    mfcc_features = extract_mfcc(file_path)
+    predicted_class = mlp_model.predict([mfcc_features])[0]
+    return predicted_class
